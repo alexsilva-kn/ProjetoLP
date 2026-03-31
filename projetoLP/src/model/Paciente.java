@@ -11,9 +11,6 @@ public class Paciente implements Serializable {
     private int idade;
     private PlanoSaude plano;
 
-    // -------------------------------------------------------------------------
-    // CONSTRUTOR
-    // -------------------------------------------------------------------------
     public Paciente(String nome, String cpf, int idade) {
         this.nome = nome;
         this.cpf = cpf;

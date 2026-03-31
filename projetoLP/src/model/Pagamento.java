@@ -12,7 +12,6 @@ public class Pagamento implements Serializable {
     public Pagamento(Internacao internacao, FormaPagamento formaPagamento) {
         this.internacao = internacao;
         this.formaPagamento = formaPagamento;
-        // O valor é calculado automaticamente com base na internação
         this.valorPago = internacao.calcularValor();
     }
 
