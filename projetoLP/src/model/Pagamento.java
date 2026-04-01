@@ -25,8 +25,8 @@ public class Pagamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Pagamento [Internação ID=" + internacao.getId() +
-                ", Forma=" + formaPagamento +
-                ", Valor Pago=" + valorPago + "]";
+        return "Pagamento Internação ID = " + internacao.getId() + '\n' +
+                "Forma : " + formaPagamento + '\n' +
+                "Valor Pago = " + valorPago;
     }
 }
