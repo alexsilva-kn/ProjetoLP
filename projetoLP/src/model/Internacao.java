@@ -109,14 +109,12 @@ public class Internacao implements Serializable {
 
     @Override
     public String toString() {
-        return "Internacao{" +
-                "id='" + id + '\'' +
-                ", paciente=" + paciente.getNome() +
-                ", medico=" + medico.getNome() +
-                ", tipo=" + tipo +
-                ", local='" + local + '\'' +
-                ", entrada=" + entrada +
-                ", alta=" + alta +
-                '}';
+        return "Internacao" +
+                " ID : " + id + '\n' +
+                "Paciente : " + paciente.getNome() + '\n' +
+                "Medico : " + medico.getNome() + '\n' +
+                "Tipo : " + tipo + '\n' +
+                "Local : " + local + '\n' +
+                "Entrada : " + entrada + '\n';
     }
 }

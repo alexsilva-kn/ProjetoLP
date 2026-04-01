@@ -48,11 +48,10 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", idade=" + idade +
-                ", plano=" + (plano != null ? plano : "Particular") +
-                '}';
+        return "Paciente\n" +
+                "Nome : " + nome + '\n' +
+                "CPF : " + cpf + '\n' +
+                "Idade : " + idade + '\n' +
+                "Plano : " + (plano != null ? plano : "Particular");
     }
 }

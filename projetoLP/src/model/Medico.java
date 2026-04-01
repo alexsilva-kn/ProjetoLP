@@ -28,9 +28,8 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        return "Medico{" +
-                "nome='" + nome + '\'' +
-                ", crm='" + crm + '\'' +
-                '}';
+        return "Medico:\n" +
+                "Nome : " + nome + '\n' +
+                "CRM : " + crm;
     }
 }
