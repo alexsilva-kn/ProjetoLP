@@ -36,7 +36,7 @@ public class Medico implements Serializable {
     public String toString() {
         return "Medicos cadastrados:\n" +
                 "Nome : " + nome + '\n' +
-                "Especialidade : " + crm + '\n' +
+                "Especialidade : " + especialidade + '\n' +
                 "CRM : " + crm;
     }
 }
