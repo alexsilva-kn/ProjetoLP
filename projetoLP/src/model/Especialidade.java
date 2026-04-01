@@ -4,7 +4,7 @@ public enum Especialidade {
     CLINICA_GERAL,
     CARDIOLOGISTA,
     ORTOPEDIA,
-    CIRGURGIA,
+    CIRURGIA,
     MEDICININA_INTENSIVA,
     GEREATRIA
 }
