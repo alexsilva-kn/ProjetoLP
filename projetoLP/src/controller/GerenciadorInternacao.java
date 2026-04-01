@@ -61,4 +61,8 @@ public class GerenciadorInternacao {
     public Internacao buscarInternacaoPorId(String id) {
         return internacoes.get(id);
     }
+
+    public List<Internacao> listarTodas() {
+        return new ArrayList<>(internacoes.values());
+    }
 }

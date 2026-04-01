@@ -8,14 +8,20 @@ public class Medico implements Serializable {
 
     private String nome;
     private String crm;
+    private String especialidade;
 
-    public Medico(String nome, String crm) {
+    public Medico(String nome, String especialidade, String crm) {
         this.nome = nome;
+        this.especialidade = especialidade;
         this.crm = crm;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
     }
 
     public String getCrm() {
@@ -30,6 +36,7 @@ public class Medico implements Serializable {
     public String toString() {
         return "Medico:\n" +
                 "Nome : " + nome + '\n' +
+                "Especialidade : " + crm + '\n' +
                 "CRM : " + crm;
     }
 }

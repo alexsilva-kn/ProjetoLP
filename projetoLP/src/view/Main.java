@@ -3,6 +3,7 @@ package view;
 import model.FormaPagamento;
 import model.TipoInternacao;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -32,8 +33,9 @@ public class Main {
             System.out.println("4 - Listar Médicos");
             System.out.println("5 - Registrar Internação");
             System.out.println("6 - Listar Internações");
-            System.out.println("7 - Registrar Pagamento");
-            System.out.println("8 - Listar Pagamentos");
+            System.out.println("7 - Dar Alta (FINALIZAR INTERNAÇÃO)"); // NOVO
+            System.out.println("8 - Registrar Pagamento");
+            System.out.println("9 - Listar Pagamentos");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
 
@@ -64,13 +66,16 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Nome do médico: ");
+                    System.out.print("Nome do médico: \n");
                     String nomeMedico = scanner.nextLine();
+
+                    System.out.println("Especialidade: ");
+                    String especialidade = scanner.nextLine();
 
                     System.out.print("CRM: ");
                     String crm = scanner.nextLine();
 
-                    if (hospital.cadastrarMedico(nomeMedico, crm)) {
+                    if (hospital.cadastrarMedico(nomeMedico, especialidade, crm)) {
                         System.out.println("Médico cadastrado!");
                     } else {
                         System.out.println("Médico já existe.");
@@ -116,6 +121,17 @@ public class Main {
 
                 case 7:
                     System.out.print("ID da internação: ");
+                    String idAlta = scanner.nextLine();
+
+                    if (hospital.darAlta(idAlta, LocalDate.now())) {
+                        System.out.println("Alta realizada com sucesso!");
+                    } else {
+                        System.out.println("Internação não encontrada.");
+                    }
+                    break;
+
+                case 8:
+                    System.out.print("ID da internação: ");
                     String idInternacao = scanner.nextLine();
 
                     System.out.println("Forma (1-PIX, 2-DINHEIRO, 3-CARTAO, 4-PARCELADO): ");
@@ -138,7 +154,7 @@ public class Main {
                     }
                     break;
 
-                case 8:
+                case 9:
                     hospital.listarPagamentos();
                     break;
 

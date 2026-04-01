@@ -33,7 +33,6 @@ public class Hospital implements Serializable {
         this.gerenciadorPagamento = new GerenciadorPagamento();
     }
 
-    // --- MÉTODOS DE PACIENTE E MÉDICO ---
     public boolean cadastrarPaciente(String nome, String cpf, int idade) {
         return gerenciadorPaciente.cadastrarPaciente(new Paciente(nome, cpf, idade));
     }
@@ -42,8 +41,8 @@ public class Hospital implements Serializable {
         for (Paciente p : gerenciadorPaciente.listarPacientes()) System.out.println(p);
     }
 
-    public boolean cadastrarMedico(String nome, String crm) {
-        return gerenciadorMedico.cadastrarMedico(new Medico(nome, crm));
+    public boolean cadastrarMedico(String nome, String especialidade, String crm) {
+        return gerenciadorMedico.cadastrarMedico(new Medico(nome, especialidade, crm));
     }
 
     public void listarMedicos() {
@@ -64,14 +63,31 @@ public class Hospital implements Serializable {
     }
 
     public void listarInternacoes() {
-        for (Internacao i : gerenciadorInternacao.listarAtivas()) {
+        for (Internacao i : gerenciadorInternacao.listarTodas()) {
             System.out.println(i);
         }
     }
     public void registrarPagamento(String idInternacao, FormaPagamento forma) {
-        Internacao internacao = null;
-
         try {
+            Internacao i = gerenciadorInternacao.buscarInternacaoPorId(idInternacao);
+
+            if (i == null) {
+                System.out.println("Internação não encontrada.");
+                return;
+            }
+
+            double valor = i.calcularValor();
+
+            if (valor == 0) {
+                System.out.println("Erro: internação ainda não finalizada.");
+                return;
+            }
+
+            gerenciadorPagamento.pagar(i, forma);
+
+            System.out.println("Pagamento realizado!");
+            System.out.println("Valor pago: R$ " + valor);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -80,6 +96,15 @@ public class Hospital implements Serializable {
     public void listarPagamentos() {
         gerenciadorPagamento.gerarRelatorio();
         System.out.println("Relatório atualizado em 'relatorio.txt'.");
+    }
+
+    public boolean darAlta(String id, LocalDate data) {
+        try {
+            gerenciadorInternacao.darAlta(id, data);
+            return true;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
     public void salvarHospital(String nomeArquivo) {

@@ -54,19 +54,25 @@ public class Internacao implements Serializable {
         return alta == null;
     }
 
-    public double calcularValor() {
-
+    public long getDiasInternado() {
         if (alta == null) return 0;
+        return ChronoUnit.DAYS.between(entrada, alta) + 1;
+    }
 
-        long dias = ChronoUnit.DAYS.between(entrada, alta);
-
-        double diaria = switch (tipo) {
+    public double getValorDiaria() {
+        return switch (tipo) {
             case ENFERMARIA -> 300;
             case APARTAMENTO -> 800;
             case UTI -> 2500;
         };
+    }
 
-        double total = dias * diaria;
+    public double calcularValor() {
+
+        if (alta == null) return 0;
+
+        long dias = getDiasInternado();
+        double total = dias * getValorDiaria();
 
         double percentual = 1.0;
 
@@ -76,7 +82,6 @@ public class Internacao implements Serializable {
 
         return total * percentual;
     }
-
 
     public String getId() {
         return id;
@@ -106,15 +111,18 @@ public class Internacao implements Serializable {
         return alta;
     }
 
-
     @Override
     public String toString() {
-        return "Internacao" +
-                " ID : " + id + '\n' +
-                "Paciente : " + paciente.getNome() + '\n' +
-                "Medico : " + medico.getNome() + '\n' +
-                "Tipo : " + tipo + '\n' +
-                "Local : " + local + '\n' +
-                "Entrada : " + entrada + '\n';
+        return "Internacao\n" +
+                "ID: " + id + "\n" +
+                "Paciente: " + paciente.getNome() + "\n" +
+                "Medico: " + medico.getNome() + "\n" +
+                "Especialidade: " + medico.getEspecialidade() + "\n" +
+                "Tipo: " + tipo + "\n" +
+                "Local: " + local + "\n" +
+                "Entrada: " + entrada + "\n" +
+                "Alta: " + (alta != null ? alta : "Em andamento") + "\n" +
+                "Dias: " + getDiasInternado() + "\n" +
+                "Valor Total: R$ " + calcularValor() + "\n";
     }
 }
