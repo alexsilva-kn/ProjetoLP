@@ -72,7 +72,7 @@ public class Main {
                     System.out.println("Especialidade: ");
                     String especialidade = scanner.nextLine();
 
-                    System.out.println("crm: ");
+                    System.out.println("CRM: ");
                     String crm = scanner.nextLine();
 
                     if (hospital.cadastrarMedico(nomeMedico, especialidade, crm)) {
