@@ -69,13 +69,13 @@ public class Main {
                     System.out.print("Nome do médico: \n");
                     String nomeMedico = scanner.nextLine();
 
-                    System.out.println("CRM : ");
-                    String crm = scanner.nextLine();
-
                     System.out.println("Especialidade: ");
                     String especialidade = scanner.nextLine();
 
-                    if (hospital.cadastrarMedico(nomeMedico, crm, especialidade)) {
+                    System.out.println("crm: ");
+                    String crm = scanner.nextLine();
+
+                    if (hospital.cadastrarMedico(nomeMedico, especialidade, crm)) {
                         System.out.println("Médico cadastrado!");
                     } else {
                         System.out.println("Médico já existe.");
